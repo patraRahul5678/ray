@@ -13,27 +13,27 @@ export default function ContactComponent() {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState("");
 
-  const sendEmail = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const sendEmail = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    const response = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, subject, message }),
-    });
+  //   const response = await fetch("/api/send-email", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ name, email, subject, message }),
+  //   });
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    if (data.success) {
-      setSuccess("✅ Message sent successfully, we'll connect with you soon!");
-      setName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
-    } else {
-      setSuccess("❌ Failed to send. Please try again later.");
-    }
-  };
+  //   if (data.success) {
+  //     setSuccess("✅ Message sent successfully, we'll connect with you soon!");
+  //     setName("");
+  //     setEmail("");
+  //     setSubject("");
+  //     setMessage("");
+  //   } else {
+  //     setSuccess("❌ Failed to send. Please try again later.");
+  //   }
+  // };
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -102,7 +102,7 @@ export default function ContactComponent() {
             <Col md={6} data-aos="fade-left">
               <div className="contact-form">
                 <p className="text-orange text-center mb-2">{success}</p>
-                <Form id="contactForm" onSubmit={sendEmail}>
+                <Form id="contactForm" >
                   <Form.Group className="mb-3">
                     <Form.Control
                       type="text"
